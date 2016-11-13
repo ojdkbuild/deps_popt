@@ -26,9 +26,10 @@ add_subdirectory ( ${CMAKE_CURRENT_LIST_DIR}/resources/popt_113_cmake ${CMAKE_CU
 add_custom_target ( ${PROJECT_NAME} DEPENDS lookaside_popt )
 
 # pkg-config
+set ( ${PROJECT_NAME}_LOOKASIDE_DIR ${CMAKE_CURRENT_LIST_DIR}/../../lookaside/popt )
 set ( ${PROJECT_NAME}_MODULE popt )
 set ( ${PROJECT_NAME}_PC_CFLAGS "-I${CMAKE_CURRENT_LIST_DIR}/resources/popt_113_include " )
-set ( ${PROJECT_NAME}_PC_CFLAGS "${${PROJECT_NAME}_PC_CFLAGS} -I${CMAKE_CURRENT_LIST_DIR}/popt" )
+set ( ${PROJECT_NAME}_PC_CFLAGS "${${PROJECT_NAME}_PC_CFLAGS} -I${${PROJECT_NAME}_LOOKASIDE_DIR}" )
 set ( ${PROJECT_NAME}_PC_LIBS "-L${CMAKE_LIBRARY_OUTPUT_DIRECTORY} -llookaside_popt" )
 configure_file ( ${CMAKE_CURRENT_LIST_DIR}/../../resources/cmake/pkg-config.in 
         ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/pkgconfig/popt.pc )
